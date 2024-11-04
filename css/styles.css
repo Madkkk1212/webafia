@@ -1,0 +1,695 @@
+/* General Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Roboto:wght@300&display=swap');
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lilita One', cursive;
+    scroll-behavior: smooth;
+}
+
+.logo img {
+    width: 32px; /* Ubah ukuran sesuai kebutuhan */
+    height: auto; /* Atur tinggi otomatis agar sesuai rasio */
+    vertical-align: middle; /* Agar gambar sejajar dengan teks */
+    margin-right: 8px; /* Tambahkan jarak antara gambar dan teks */
+}
+
+
+/* Navbar Styles */
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: top 0.3s; /* Animasi saat navbar muncul dan menghilang */
+}
+
+.header .logo {
+    font-size: 24px;
+    color: #000000;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.header .logo i {
+    font-size: 24px;
+    margin-right: 10px;
+    color: #00bcd4;
+}
+
+/* Nav Links */
+.header nav {
+    display: flex;
+    gap: 30px;
+}
+
+/* Smooth underline animation for nav links */
+.header nav a {
+        text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    padding: 8px 15px;
+    transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+}
+
+.header nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background-color: #00bcd4;
+    transition: width 0.3s ease;
+}
+
+.header nav a.active {
+    background-color: #00bcd4;
+    color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.underline {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: #00bcd4;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+.header nav a:hover {
+    color: #00bcd4;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
+
+
+/* .header nav a:hover::after,
+.header nav a.active::after {
+    width: 100%;
+    
+} */
+
+/* Search and Cart Styling */
+.search-cart {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search {
+    position: relative;
+    right: 20px;
+}
+
+.search input[type="text"] {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    outline: none;
+    width: 200px;
+    transition: width 0.10s ease;
+}
+
+.search button {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #00bcd4;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+     transition: transform 0.3s, background-color 0.3s;
+}
+
+.search button:hover {
+    background: #0097a7;
+     transform: scale(1.1);
+}
+
+/* Menu Icon for Mobile */
+.menu-icon {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    position: absolute; /* Makes it easier to control position */
+    right: 50px; /* Adjusts distance from the right edge */
+}
+
+
+/* Hide the nav menu by default in mobile view */
+.nav-menu {
+    display: none;
+    position: absolute;
+    top: 60px; /* Adjust based on your header height */
+    right: 20px; /* Positioning it to the right */
+    background-color: white;
+    width: 200px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    z-index: 1000;
+}
+
+/* Style for each nav link in the dropdown */
+.nav-menu a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+/* Hover effect on each nav link */
+.nav-menu a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Display the menu icon on smaller screens */
+.menu-icon {
+    display: block;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    position: absolute;
+    right: 40px;
+}
+
+/* Show the nav menu when the menu is active */
+.nav-menu.active {
+    display: block;
+}
+
+/* Hide the full navbar on small screens */
+.header nav {
+    display: none;
+}
+
+/* General fade-in and slide-up animation for sections */
+.section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.home-section {
+    min-height: 100vh; /* Full height of the viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa; /* Light background */
+    margin: 0; /* Remove margin */
+    padding: 20px; /* Add padding */
+}
+
+.home-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Full width */
+}
+
+.home-text {
+    flex-basis: 50%;
+    padding: 20px;
+    font-size: 24px;
+    color: #333; /* Darker text color */
+}
+
+/* Styling untuk h1 */
+.home-text h1 {
+    font-family: 'Lilita One', cursive;
+    font-size: 70px; /* Besar ukuran font */
+    font-weight: 600;
+    color: #1d3557; /* Warna biru gelap */
+    text-transform: uppercase; /* Semua huruf kapital */
+    letter-spacing: 2px; /* Jarak antar huruf */
+}
+
+/* Styling untuk paragraf (p) */
+.home-text p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px; /* Ukuran font lebih kecil */
+    font-weight: 300;
+    color: #6c757d; /* Warna abu-abu */
+    line-height: 1.6; /* Jarak antar baris */
+    margin-top: 10px;
+}
+
+        .home-image {
+            flex-basis: 30%;
+            padding: 90px;
+        }
+
+        .home-image img {
+            width: 100%;
+            height: auto; /* Adjust height automatically */
+            max-height: 100%; /* Limit max height */
+            object-fit: cover;
+            border-radius: 12px; /* Optional: Add border radius */
+        }
+
+
+        /* Gaya untuk bagian toko */
+/* Full-Screen Style for Toko Section */
+
+.toko-section {
+    width: 100%;
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9; /* Sesuaikan dengan warna background Anda */
+    box-sizing: border-box;
+}
+
+#toko {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 60px 20px;
+    background-color: #f3f4f6;
+    color: #333;
+    box-sizing: border-box;
+    gap: 40px;
+}
+
+/* Left Column (Store Description) */
+#toko .description {
+    flex: 1;
+    max-width: 600px;
+}
+
+#toko .description h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #b92626;
+    margin-bottom: 15px;
+}
+
+#toko .description p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+    text-align: justify;
+}
+
+/* Right Column (Card Section) */
+.card-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.card h3 {
+    font-size: 28px;
+    color: #b92626;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #b92626;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+
+/* Right Column (Product List) */
+/* Gaya navbar aktif */
+.header nav a.active {
+    background-color: #00bcd4;
+    color: white;
+    border-radius: 8px;
+}
+
+        /* Products Section Styles */
+       .products-section {
+    padding: 60px 20px;
+    background-color: #ffffff; /* White background */
+    text-align: center;
+}
+
+.products-section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #00bcd4; /* Main color */
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 20px; /* Space between images */
+    padding: 0 20px; /* Add padding */
+}
+
+.product-item img {
+    width: 100%;
+    height: 200px; /* Set a fixed height */
+    object-fit: cover; /* Ensure image fills the area without distortion */
+    transition: transform 0.3s ease;
+    border-radius: 8px; /* Optional: Add border radius */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+}
+
+.product-item img:hover {
+    transform: scale(1.05);
+}
+
+.modal {
+            display: none; /* Sembunyikan modal secara default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8); /* Warna latar belakang modal */
+        }
+
+        /* Gaya untuk gambar di dalam modal */
+        .modal-content {
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+            margin: auto;
+            padding-top: 10px;
+        }
+
+        /* Gaya untuk tombol close (X) */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+
+        /* Contact Section Styles */
+        .contact-section {
+            padding: 60px 40px;
+            background-color: #f8f9fa; /* Light background */
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 40px 20px;
+        }
+
+        .contact-section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #00bcd4; /* Main color */
+        }
+
+        .contact-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #555; /* Darker text for readability */
+        }
+
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px; /* Space between icons */
+        }
+
+        .contact-icon {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333; /* Text color */
+            padding: 10px 20px;
+            border: 2px solid #00bcd4; /* Border color */
+            border-radius: 8px;
+            background-color: white; /* Button background */
+            transition: all 0.3s ease;
+        }
+
+        .contact-icon i {
+            margin-right: 10px; /* Space between icon and text */
+            font-size: 20px; /* Icon size */
+        }
+
+        .contact-icon:hover {
+            background-color: #00bcd4; /* Change background on hover */
+            color: white; /* Change text color on hover */
+            border-color: #0097a7; /* Darker border on hover */
+        }
+
+        .map-container {
+    position: relative;
+    min-height: 80vh;
+    width: 100%;
+    max-width: 600px;
+    height: 450px;
+    margin: 20px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+    transform: perspective(1000px) rotateX(-2deg) rotateY(5deg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: brightness(90%) contrast(110%);
+    transition: filter 0.3s ease;
+}
+
+.map-container:hover {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1.05);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.4);
+}
+
+.map-container:hover iframe {
+    filter: brightness(100%) contrast(100%);
+}
+
+
+@media (min-width: 768px) {
+    /* Show full navbar on larger screens */
+    .header nav {
+        display: flex;
+    }
+        footer {
+        font-size: 0.9em; /* Sedikit mengecilkan font untuk tablet */
+        padding: 15px;
+    }
+    /* Hide menu icon and dropdown in desktop view */
+    .menu-icon,
+    .nav-menu {
+        display: none;
+    }
+
+    
+}
+
+footer {
+    background-color: #333; /* Ganti warna sesuai keinginan */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 1em;
+}
+
+/* Responsive Navigation */
+.responsive-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 250px;
+    background-color: white;
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+    transition: right 0.3s ease;
+    z-index: 1000;
+}
+
+.responsive-nav.active {
+    right: 0;
+}
+
+
+.responsive-nav a {
+    margin: 15px 0;
+    font-size: 18px;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.responsive-nav a:hover {
+    color: #00bcd4;
+}
+
+/* Mobile and Tablet Responsive Styling */
+@media (max-width: 768px) {
+    .header {
+        padding: 15px;
+    }
+
+        footer {
+        font-size: 0.9em; /* Sedikit mengecilkan font untuk tablet */
+        padding: 15px;
+    }
+
+    /* Hide search and cart on smaller screens */
+    .search,
+    .cart {
+        display: none;
+    }
+
+    /* Show the menu icon */
+    .menu-icon {
+        display: block;
+    }
+
+    /* Hide normal nav links on smaller screens */
+    .header nav {
+        display: none;
+    }
+
+        .home-text {
+        font-size: 20px; /* Smaller font size for mobile */
+        padding: 10px; /* Reduce padding */
+    }
+
+    .home-image {
+        flex-basis: 100%; /* Full width for mobile */
+        padding: 10px;
+    }
+
+      #toko {
+        padding: 30px 15px; /* Further reduce padding */
+        gap: 20px; /* Reduce gap between elements */
+    }
+
+    #toko .description h2 {
+        font-size: 24px; /* Smaller font size for mobile */
+    }
+
+    #toko .description p {
+        font-size: 14px; /* Smaller font size for mobile */
+    }
+
+      #toko {
+        flex-direction: column; /* Mengubah layout ke kolom */
+        align-items: center; /* Memusatkan item */
+    }
+
+    .card-section {
+        order: 1; /* Memindahkan card ke atas */
+        width: 100%; /* Memenuhi lebar layar */
+        max-width: none; /* Menghilangkan batasan lebar */
+        display: flex;
+        justify-content: flex-start; /* Menyelaraskan card ke kiri */
+    }
+    
+    .card {
+        max-width: 100%; /* Mengatur card agar memenuhi lebar layar pada mobile */
+    }
+
+    
+        .home-section img {
+        width: 90%; /* Memperbesar gambar di layar tablet */
+    }
+
+    .home-section h1 {
+        font-size: 1.2em; /* Mengecilkan ukuran teks di tablet */
+    }
+
+    .home-section p {
+        font-size: 0.75em; /* Mengecilkan ukuran teks di tablet */
+    }
+}
+
+/* Tablet adjustments */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .search input[type="text"] {
+        width: 150px;
+    }
+        .home-section img {
+        width: 90%; /* Memperbesar gambar di layar tablet */
+    }
+
+    .home-section h1 {
+        font-size: 1.8em; /* Mengecilkan ukuran teks di tablet */
+    }
+
+    .home-section p {
+        font-size: 0.9em; /* Mengecilkan ukuran teks di tablet */
+    }
+}
+
+/* Responsif untuk layar mobile */
+@media (max-width: 480px) {
+    .home-section img {
+        width: 100%; /* Gambar memenuhi lebar layar di mobile */
+    }
+
+        footer {
+        font-size: 0.8em; /* Mengecilkan font untuk layar mobile */
+        padding: 10px;
+    }
+
+    .home-section h1 {
+        font-size: 1.2em; /* Mengecilkan ukuran teks di mobile */
+    }
+
+    .home-section p {
+        font-size: 0.7em; /* Mengecilkan ukuran teks di mobile */
+    }
+}
